@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="{{ selected_lang }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{% if is_english %}GDPR Chatbot{% else %}Chatbot RODO{% endif %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #f1f1f1;
+      font-family: 'Ubuntu', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #00ccff;
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+    }
+
+    form {
+      width: 100%;
+      max-width: 500px;
+      margin: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 204, 255, 0.2);
+    }
+
+    select, input, button {
+      font-size: 1rem;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    select {
+      background-color: #2a2a2a;
+      color: #fff;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'><polyline points='6 9 12 15 18 9' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 20px;
+    }
+
+    input[type="text"] {
+      background-color: #2a2a2a;
+      color: #fff;
+    }
+
+    button {
+      background-color: #00ccff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00aacc;
+    }
+
+    .chat-box {
+      margin-top: 30px;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 10px;
+      box-sizing: border-box;
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 204, 255, 0.2);
+    }
+
+    .chat-box p {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .chat-box strong {
+      display: block;
+      margin-bottom: 10px;
+      color: #00ccff;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 10px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>{% if is_english %}GDPR Chatbot{% else %}RODO Chatbot{% endif %}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <select name="language" id="language-select" onchange="changeLanguage(this)">
+      <option value="pl" {% if selected_lang == 'pl' %}selected{% endif %}>Polski</option>
+      <option value="en" {% if selected_lang == 'en' %}selected{% endif %}>English</option>
+    </select>
+    <input type="text" name="question" placeholder="{% if is_english %}Ask your GDPR question...{% else %}Zadaj pytanie o RODO...{% endif %}" required>
+    <button type="submit">{% if is_english %}Send{% else %}Wyślij{% endif %}</button>
+  </form>
+
+  {% if response %}
+  <div class="chat-box">
+    <p><strong>{% if is_english %}Answer:{% else %}Odpowiedź:{% endif %}</strong>{{ response }}</p>
+  </div>
+  {% endif %}
+
+  <script>
+    function changeLanguage(select) {
+      const lang = select.value;
+      window.location.href = "?lang=" + lang;
+    }
+  </script>
+</body>
+</html>
