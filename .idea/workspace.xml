@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c759d8b1-c4a6-4710-a67b-ffedc7b2e8b8" name="Changes" comment="Use dotenv for SECRET_KEY, DEBUG and ALLOWED_HOSTS; update .gitignore">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +52,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHELLCHECK.PATH": "I do mind",
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -119,7 +120,7 @@
       <workItem from="1753801457338" duration="9285000" />
       <workItem from="1754154872891" duration="369000" />
       <workItem from="1754175572852" duration="9088000" />
-      <workItem from="1754424219304" duration="1802000" />
+      <workItem from="1754424219304" duration="2421000" />
     </task>
     <task id="LOCAL-00001" summary="Added find_best_match function and enhanced design">
       <option name="closed" value="true" />
